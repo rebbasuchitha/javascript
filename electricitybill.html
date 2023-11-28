@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Electricity Bill Calculator</title>
+<meta charset="UTF-8">
+</head>
+<body>
+  <h1>Electricity Bill Calculator</h1>
+  <form name="f1">
+    <label for="u1">Enter number of units:</label><input type="text" id="u1" name="units" placeholder="Units" required autofocus>
+    <input type="button" value="Calculate" onclick="calculateBill()"><br><br>
+
+    <label for="v2">Amount:</label>
+    <input type="text" id="v2" name="amount" placeholder="Amount" required><br><br>
+
+    <label for="v3">Service charge:</label>
+    <input type="text" id="v3" name="serviceCharge" placeholder="Service charge" required><br><br>
+
+    <label for="v4">Final Amount:</label>
+    <input type="text" id="v4" name="finalAmount" placeholder="Final amount" required><br><br>
+  </form>
+
+  <script>
+    function calculateBill() {
+      units = parseInt(document.getElementById('u1').value)
+      amt = 0, s = 0, fa = 0
+      if (units <= 50)
+	{
+        amt = units * 0.50
+      } else if (units <= 150) 
+	{
+        amt = 25 + (units - 50) * 0.75
+      } else if (units < 250)	
+	{
+        amt = 100 + (units - 150) * 1.20
+      } else 
+	{
+        amt = 220 + (units - 250) * 1.50
+      }
+      
+      document.getElementById("v2").value = amt
+
+      s = (amt * 20) / 100
+      document.getElementById("v3").value = s
+
+      fa = amt + s
+      document.getElementById("v4").value = fa
+    }
+  </script>
+</body>
+</html>

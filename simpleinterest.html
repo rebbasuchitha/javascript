@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interest Calculator</title>
+<meta charset="UTF-8">
+</head>
+<body>
+  <h1>Interest Calculator</h1>
+  <form id="interestForm">
+    <label for="v1">Enter Principal amount:</label>
+    <input type="number" id="v1" placeholder="Principal amount" required autofocus><br><br>
+
+    <label for="v2">Enter Time:</label>
+    <input type="number" id="v2" placeholder="Time in years" required><br><br>
+
+    <label for="v3">Enter Interest Rate:</label>
+    <input type="number" id="v3" placeholder="Interest rate" required><br><br>
+
+    <input type="button" value="Calculate" onClick="calInterest()"><br><br>
+
+    <label for="v4">Simple Interest:</label>
+    <input type="text" id="v4" placeholder="Simple Interest" readonly><br><br>
+
+    <label for="v5">Compound Interest:</label>
+    <input type="text" id="v5" placeholder="Compound Interest" readonly required><br><br>
+  </form>
+
+  <script>
+    function calInterest() {
+      principal = parseFloat(document.getElementById('v1').value);
+      time = parseFloat(document.getElementById('v2').value);
+      rate = parseFloat(document.getElementById('v3').value);
+
+      si = (principal * time * rate) / 100
+      document.getElementById('v4').value = si
+
+      ci = principal * (Math.pow((1 + rate / 100), time)) - principal;
+      document.getElementById('v5').value = ci
+    }
+  </script>
+</body>
+</html>
